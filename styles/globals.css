@@ -24,3 +24,7 @@ a {
 .nav__item-link-first {
   margin-left: 10%;
 }
+
+.nav__item-link {
+  margin-right: 5%;
+}

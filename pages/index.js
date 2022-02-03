@@ -6,10 +6,11 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Swell Clutch</title>
+        <title>Swell</title>
         <meta name="description" content="Surf App for Saving Swells" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <body>you are logged in </body>
     </div>
   );
 }

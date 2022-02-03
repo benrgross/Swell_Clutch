@@ -26,7 +26,7 @@ function Nav() {
               </Link>
             </li>
             <li className="nav-item nav-link active nav__item-link">
-              <Link className="nav-link" href="/signIn">
+              <Link className="nav-link" href="/api/auth/login">
                 Sign In
               </Link>
             </li>

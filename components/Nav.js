@@ -3,9 +3,9 @@ import Link from "next/link";
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container-fluid">
-        <Link className="navbar-brand" href="/">
-          Navbar
+      <div className="container-fluid navbar-brand nav-icon">
+        <Link className="navbar-brand hello" href="/">
+          Swell Clutch
         </Link>
         <button
           className="navbar-toggler"
@@ -20,14 +20,14 @@ function Nav() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
+            <li className="nav-item nav-link active nav__item-link nav__item-link-first">
               <Link className="nav-link active" aria-current="page" href="/">
                 Dashboard
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item nav-link active nav__item-link">
               <Link className="nav-link" href="/signIn">
-                signIn
+                Sign In
               </Link>
             </li>
           </ul>

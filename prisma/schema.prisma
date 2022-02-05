@@ -58,5 +58,4 @@ model Swell {
   score         Int?
   session       Session?  @relation(fields: [sessionId], references: [id])
   sessionId    Int? 
-
 }

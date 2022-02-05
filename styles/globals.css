@@ -15,31 +15,12 @@ a {
   box-sizing: border-box;
 }
 
-.nav-icon {
-  padding: 1rem;
-  margin-left: 2%;
-  margin-right: 1%;
+.brand__cont {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 3rem;
 }
-
-.nav__item-link-first {
-  margin-left: 10%;
-}
-
-.nav__item-link {
-  margin-right: 5%;
-}
-
-.brand {
+.brand__header {
   color: #0070f3;
 }
-
-.nav-start {
-  margin-left: 3%;
-  padding: 1rem;
-  font-size: 1.4rem;
-}
-
-/* .nav__sign-in-out {
-  display: flex;
-  justify-self: right;
-} */

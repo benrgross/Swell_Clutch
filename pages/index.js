@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Header from "../components/Header";
 import { useUser } from "@auth0/nextjs-auth0";
 import styles from "../styles/Home.module.css";
 
@@ -12,7 +13,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body>
-        {user ? <h1>you are logged in</h1> : <h1>you are not logged in</h1>}{" "}
+        <Header />
+        {user ? (
+          <h1>you are logged in</h1>
+        ) : (
+          <h1>you are not logged in</h1>
+        )}{" "}
       </body>
     </div>
   );

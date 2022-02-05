@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Search from "./Search";
+import Search from "./SearchSpots";
 
 function Dashboard() {
   return (
@@ -13,11 +13,6 @@ function Dashboard() {
         <Col>
           {" "}
           <div> / add account details</div>{" "}
-        </Col>
-      </Row>
-      <Row>
-        <Col sm={12} md={4}>
-          <Search />
         </Col>
       </Row>
     </Container>

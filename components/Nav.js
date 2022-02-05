@@ -14,6 +14,7 @@ function Navigation() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Dashboard</Nav.Link>
+            <Nav.Link href="/search">Search</Nav.Link>
           </Nav>
           <Nav className="ml-auto">
             {user ? (

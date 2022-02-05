@@ -38,3 +38,21 @@ a {
   display: flex;
   margin: auto;
 }
+
+.search__cont {
+  margin-top: 2rem;
+  border: 1.5px solid #0070f3;
+  border-radius: 1%;
+  padding: 5%;
+}
+
+.search__spot-label {
+  margin-bottom: 1rem;
+}
+.search__spot-btn {
+  margin-top: 3rem !important;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background-color: #0070f3;
+}

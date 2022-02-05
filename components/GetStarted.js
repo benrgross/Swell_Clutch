@@ -1,13 +1,10 @@
+import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Button, Container, Row, Col } from "react-bootstrap";
 
-function getStarted() {
+export default function GetStarted() {
   const router = useRouter();
-
-  const signUp = () => {
-    router.push("/api/auth/login");
-  };
 
   return (
     <Container className="signUp__cont">
@@ -22,7 +19,10 @@ function getStarted() {
         <Col></Col>
         <Col>
           {" "}
-          <Button onClick={signUp} className="signUp__get-started">
+          <Button
+            onClick={router.push("/api/auth/login")}
+            className="signUp__get-started"
+          >
             Get Started
           </Button>
         </Col>
@@ -31,5 +31,3 @@ function getStarted() {
     </Container>
   );
 }
-
-export default getStarted;

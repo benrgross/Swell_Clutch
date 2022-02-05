@@ -1,9 +1,10 @@
+import Navigation from "./Nav.js";
 import Nav from "./Nav.js";
 
 const Layout = ({ children }) => {
   return (
     <>
-      <Nav />
+      <Navigation />
       <div className="Container">
         <main>{children}</main>
       </div>

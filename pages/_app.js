@@ -1,6 +1,6 @@
 import { UserProvider } from "@auth0/nextjs-auth0";
 import Layout from "../components/Layout";
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {

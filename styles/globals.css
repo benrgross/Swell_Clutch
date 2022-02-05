@@ -28,3 +28,19 @@ a {
 .nav__item-link {
   margin-right: 5%;
 }
+
+.brand {
+  color: #0070f3;
+}
+
+.nav-start {
+  margin-left: 3%;
+  padding: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.nav-sign-in-out {
+  margin-left: auto;
+  margin-right: 6%;
+  font-size: 16px;
+}

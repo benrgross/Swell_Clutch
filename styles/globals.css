@@ -24,3 +24,17 @@ a {
 .brand__header {
   color: #0070f3;
 }
+
+.signUp__cont {
+  padding: 10px;
+}
+
+.signUp__h2 {
+  margin-bottom: 4rem;
+}
+
+.signUp__get-started {
+  padding: 1rem;
+  display: flex;
+  margin: auto;
+}

@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { NavDropdown, Nav, Navbar, Container } from "react-bootstrap";
+import { Nav, Navbar, Container } from "react-bootstrap";
 import { useUser } from "@auth0/nextjs-auth0";
 
 function Navigation() {

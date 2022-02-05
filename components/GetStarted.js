@@ -8,7 +8,7 @@ export default function GetStarted() {
 
   return (
     <Container className="signUp__cont">
-      <Row className="d-felx justify-content-center">
+      <Row>
         <Col></Col>
         <Col md={8}>
           <h2 className="signUp__h2 text-center">Start Saving Swells Now</h2>
@@ -20,8 +20,8 @@ export default function GetStarted() {
         <Col>
           {" "}
           <Button
-            onClick={router.push("/api/auth/login")}
             className="signUp__get-started"
+            onClick={() => router.push("/api/auth/login")}
           >
             Get Started
           </Button>

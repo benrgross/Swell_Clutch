@@ -56,3 +56,11 @@ a {
   margin: auto;
   background-color: #0070f3;
 }
+
+.spot__result-link {
+  cursor: pointer;
+}
+
+.spot__result-link:hover {
+  color: #0070f3;
+}

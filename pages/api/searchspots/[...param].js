@@ -29,5 +29,7 @@ export default async function handler(req, res) {
       res.status(400).send(error);
       console.log(error);
     }
+  } else {
+    res.status(400).send({ error: "server did not receive corrent method" });
   }
 }

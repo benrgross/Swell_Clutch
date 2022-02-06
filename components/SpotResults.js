@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Col } from "react-bootstrap";
+import axios from "axios";
 
 function SearchSpotResults({ data }) {
   const [swell, setSwell] = useState([]);
@@ -9,6 +10,15 @@ function SearchSpotResults({ data }) {
   const getSwell = async (e) => {
     setLoading(true);
     setError(false);
+    try {
+      const body = {
+        spotId: e.target.getAttribute("data-spotid"),
+      };
+      const { data } = await axios.post("/api/getswell/currentswell", body);
+      console.log(data.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <Col sm={12} md={12}>
@@ -19,7 +29,7 @@ function SearchSpotResults({ data }) {
               onClick={getSwell}
               className="spot__result-link"
               key={spot.spotId}
-              data-spotId={spot.spotId}
+              data-spotid={spot.spotId}
               data-api={spot.href}
             >
               {spot.name}

@@ -4,15 +4,11 @@ import SpotResults from "./SpotResults";
 
 function Results({ data }) {
   return (
-    <Container className="spot__results-cont">
+    <div className="spot__results-cont">
       <Row>
-        <Col></Col>
-        <Col sm={12} md={12}>
-          <SpotResults data={data} />
-        </Col>
-        <Col></Col>
+        <SpotResults data={data} />
       </Row>
-    </Container>
+    </div>
   );
 }
 

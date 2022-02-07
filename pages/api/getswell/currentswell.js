@@ -6,11 +6,15 @@ export default async function handler(req, res) {
       const { data } = await axios.get(
         `https://services.surfline.com/kbyg/spots/forecasts/wave?spotId=${req.body.spotId}`
       );
+      const { lat, lon } = data.associated.location;
 
-      console.log(data);
-      res.json(data);
+      const results = await axios.get(
+        `https://services.surfline.com/kbyg/mapview/spot?lat=${lat}&lon=${lon}`
+      );
+
+      res.status(200).json(results.data);
     } catch (error) {
-      console.log(error);
+      res.status(400).send(error);
     }
   }
 }

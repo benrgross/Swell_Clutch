@@ -49,6 +49,7 @@ a {
 .search__spot-label {
   margin-bottom: 1rem;
 }
+
 .search__spot-btn {
   margin-top: 3rem !important;
   display: flex;
@@ -57,8 +58,14 @@ a {
   background-color: #0070f3;
 }
 
+.spot__results-col {
+  margin-top: 2rem;
+  padding: 1rem;
+}
 .spot__result-link {
   cursor: pointer;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .spot__result-link:hover {

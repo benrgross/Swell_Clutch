@@ -25,6 +25,12 @@ model User {
 model Location {
   id            Int       @default(autoincrement()) @id
   name          String?
+  lat           Int
+  lon           Int
+  timezone      String?
+  thumbnail     String?
+  type          String?
+  subregionId   String?
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   user          User?     @relation(fields: [userId], references: [id])
@@ -34,19 +40,32 @@ model Location {
 
 model Session {
   id            Int       @default(autoincrement()) @id
-  timeStamp     Int       
+  createdAt     DateTime  @default(now())
+  timeStamp     Int  
+  timeZone      String     
   utcOffset     Int      
-  wind          String?
-  tide          Int
   surfMin       Int
   surfMax       Int
+  waterTemp     String?
   score         Int
   user          User?     @relation(fields: [userId], references: [id])
   userId        Int?
   location      Location?     @relation(fields: [locationId], references: [id])
   locationId    Int?
   swell         Swell[]
+  wind          Wind[]
+  tide          Tide[]
+  report        Report[]
 
+}
+
+model Wind {
+  id            Int       @default(autoincrement()) @id
+  speed         Int?
+  dir           Int?
+  dirType       String?
+  session       Session?  @relation(fields: [sessionId], references: [id])  
+  sessionId     Int?
 }
 
 model Swell {
@@ -55,7 +74,37 @@ model Swell {
   period        Int
   direction     Int
   directionMin  Int?
-  score         Int?
   session       Session?  @relation(fields: [sessionId], references: [id])
   sessionId    Int? 
 }
+
+model Tide {
+  id            Int       @default(autoincrement()) @id
+  type          String?
+  height        Int?
+  timeStamp     Int?
+  utcOffset     Int?
+  nextTide      String?
+  nextTideFt    Int?
+  nextTideTime  Int?
+  session      Session?  @relation(fields: [sessionId], references: [id])
+  sessionId    Int? 
+}
+
+model Report {
+id            Int       @default(autoincrement()) @id
+human         Boolean?
+conditions    String?
+expired       Boolean?
+min           Int?
+max           Int?
+occasional    Int?
+humanRelation String?
+plus          Boolean
+session      Session?  @relation(fields: [sessionId], references: [id])
+sessionId    Int? 
+}
+
+
+
+

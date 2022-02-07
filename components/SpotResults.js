@@ -15,7 +15,7 @@ function SearchSpotResults({ data }) {
         spotId: e.target.getAttribute("data-spotid"),
       };
       const { data } = await axios.post("/api/getswell/currentswell", body);
-      console.log(data.data);
+      console.log(data);
     } catch (err) {
       console.log(err);
     }

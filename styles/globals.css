@@ -85,7 +85,55 @@ a {
 .current-swell__swell {
 }
 
+.current-swell__head-row {
+}
+
+.current-swell__head-cont {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 50%;
+  background-size: 100% 100%;
+  font-weight: bolder;
+  color: rgb(240, 239, 239);
+  text-shadow: black 0px 0px 2px;
+}
+
+/* .current-swell__head-cont:after {
+  opacity: 0.4;
+} */
+
+.current-swell__head-cont::before {
+  content: "";
+  opacity: 0.4;
+  opacity: 0.4;
+}
+
+.current-swell__head {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+@media only screen and (max-width: 600px) {
+  .current-swell__head-cont {
+    width: 90%;
+    height: 60%;
+    font-size: 24px;
+    background-size: 100% 100%;
+    color: black;
+  }
+  .current-swell__head {
+    font-size: 24px;
+    color: rgb(240, 239, 239);
+    text-shadow: black 0px 0px 2px;
+  }
+}
+
 .current-swell__report-cont {
+  width: 100%;
+  border: 1px solid #0070f3;
+  border-radius: 5%;
 }
 .current-swell__swell-cont {
+  width: 100%;
+  border: 1px solid #0070f3;
 }

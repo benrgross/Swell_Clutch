@@ -7,20 +7,24 @@ function CurrentSwell({ data }) {
 
   return (
     <>
-      <Row>
-        <Container className="current-swell__head-cont">
-          <h1>{spot.name}</h1>
+      <Row className="current-swell__head-row">
+        <Container
+          style={{
+            backgroundImage: `url(${spot.thumbnail}),`,
+          }}
+          className="current-swell__head-cont shadow-sm rounded"
+        >
+          <p className="current-swell__head">{spot.name}</p>
         </Container>
       </Row>
       <Row className="current-swell__cont">
         <Col md={6} classname="current-swell__report">
-          <Container className="current-swell__report-cont"></Container>
+          <Container className="current-swell__report-cont">hello</Container>
         </Col>
         <Col md={6} classname="current-swell__swell">
-          <Container className="current-swell__swell-cont"></Container>
+          <Container className="current-swell__swell-cont">hello</Container>
         </Col>
       </Row>
-      ;
     </>
   );
 }

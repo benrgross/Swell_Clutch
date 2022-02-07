@@ -43,15 +43,15 @@ a {
   margin-top: 2rem;
   border: 1.5px solid #0070f3;
   border-radius: 1%;
-  padding: 5%;
+  padding: 3%;
 }
 
 .search__spot-label {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .search__spot-btn {
-  margin-top: 3rem !important;
+  margin-top: 1rem !important;
   display: flex;
   justify-content: center;
   margin: auto;
@@ -73,9 +73,6 @@ a {
 }
 
 .current-swell__head-cont {
-  padding: 3rem;
-  display: flex;
-  justify-content: center;
 }
 .current-swell__cont {
 }
@@ -89,9 +86,12 @@ a {
 }
 
 .current-swell__head-cont {
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  width: 50%;
+  width: 55%;
   background-size: 100% 100%;
   font-weight: bolder;
   color: rgb(240, 239, 239);
@@ -101,12 +101,6 @@ a {
 /* .current-swell__head-cont:after {
   opacity: 0.4;
 } */
-
-.current-swell__head-cont::before {
-  content: "";
-  opacity: 0.4;
-  opacity: 0.4;
-}
 
 .current-swell__head {
   font-size: 2rem;
@@ -136,4 +130,31 @@ a {
 .current-swell__swell-cont {
   width: 100%;
   border: 1px solid #0070f3;
+}
+
+.current-swell__report-header {
+  border-bottom: 1px solid #0070f3;
+  margin-top: 2%;
+  margin-bottom: 3%;
+  padding: 0.5rem;
+}
+
+.current-swell__waveHeight-desc {
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+
+.current-swell__waveHeight {
+  margin-left: 0.3rem;
+  font-size: 1.3rem;
+}
+
+.current-swell__waveHeight-col {
+  padding: 0.5rem 1rem 1rem 1rem;
+  margin-left: 5%;
+}
+
+.current-swell__humanRelation {
+  opacity: 0.9;
+  font-size: 0.8rem;
 }

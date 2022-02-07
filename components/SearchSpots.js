@@ -63,9 +63,8 @@ function SearchSpot() {
         </Col>
         <Col></Col>
       </Row>
-      <Row>
-        <Results data={spot} />
-      </Row>
+
+      <Results data={spot} />
     </div>
   );
 }

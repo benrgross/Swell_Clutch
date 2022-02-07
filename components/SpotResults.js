@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import axios from "axios";
 import CurrentSwell from "./CurrentSwell";
 
@@ -26,8 +26,8 @@ function SearchSpotResults({ data }) {
   };
   return (
     <>
-      {!swell ? (
-        <>
+      {swell.length < 1 ? (
+        <Row>
           <Col></Col>
           <Col sm={12} md={6} className="spot__results-col">
             {data ? (
@@ -49,7 +49,7 @@ function SearchSpotResults({ data }) {
             )}
           </Col>
           <Col></Col>
-        </>
+        </Row>
       ) : (
         <CurrentSwell data={swell} />
       )}

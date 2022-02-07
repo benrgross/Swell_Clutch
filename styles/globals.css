@@ -71,3 +71,21 @@ a {
 .spot__result-link:hover {
   color: #0070f3;
 }
+
+.current-swell__head-cont {
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+}
+.current-swell__cont {
+}
+
+.current-swell__report {
+}
+.current-swell__swell {
+}
+
+.current-swell__report-cont {
+}
+.current-swell__swell-cont {
+}

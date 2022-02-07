@@ -1,9 +1,24 @@
-import { delBasePath } from "next/dist/shared/lib/router/router";
 import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
+import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import TideDirection from "./TideDirection";
 
 function CurrentSwell({ data }) {
   const { spot } = data;
+  console.log(spot.tide.current.type);
+
+  function tideDirection(tide) {
+    if (tide) {
+      if (tide.current.type === "NORMAL" && tide.next.type === "LOW")
+        return <FaArrowDown />;
+
+      if (tide.current.type === "NORMAL" && tide.next.type === "HIGH")
+        return <FaArrowUp />;
+
+      if (tide.current.type === "HIGH") return <FaArrowDown />;
+      if (tide.current.type === "LOW") return <FaArrowUp />;
+    } else return "";
+  }
 
   return (
     <>
@@ -16,8 +31,8 @@ function CurrentSwell({ data }) {
         </Container>
       </Row>
       <Row className="current-swell__cont">
-        <Col md={6} classname="current-swell__report">
-          <Container className="current-swell__report-cont">
+        <Col md={6} className="current-swell__report">
+          <Container className="current-swell__report-cont rounded">
             <Row>
               <div className="d-flex justify-content-center current-swell__report-header-cont">
                 <h4 className="current-swell__report-header">
@@ -51,13 +66,22 @@ function CurrentSwell({ data }) {
                   </div>
                 </Row>
               </Col>
-              <Col md={4}></Col>
-
+              <Col md={4} className="current-swell__waveHeight-col">
+                <Row>
+                  <div className="current-swell__waveHeight-desc">Tide</div>
+                </Row>
+                <Row>
+                  <div className="current-swell__waveHeight">
+                    {spot.tide.current.height.toFixed(1)} ft{" "}
+                    <TideDirection tide={spot.tide} />
+                  </div>
+                </Row>
+              </Col>
               <Col md={4}></Col>
             </Row>
           </Container>
         </Col>
-        <Col md={6} classname="current-swell__swell">
+        <Col md={6} className="current-swell__swell">
           <Container className="current-swell__swell-cont">hello</Container>
         </Col>
       </Row>

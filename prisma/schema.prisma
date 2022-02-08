@@ -24,6 +24,7 @@ model User {
 
 model Location {
   id            Int       @default(autoincrement()) @id
+  spot_id       Int       @unique
   name          String?
   lat           Int
   lon           Int
@@ -47,10 +48,9 @@ model Session {
   surfMin       Int
   surfMax       Int
   waterTemp     String?
-  score         Int
   user          User?     @relation(fields: [userId], references: [id])
   userId        Int?
-  location      Location?     @relation(fields: [locationId], references: [id])
+  spot          Location?     @relation(fields: [locationId], references: [spot_id])
   locationId    Int?
   swell         Swell[]
   wind          Wind[]

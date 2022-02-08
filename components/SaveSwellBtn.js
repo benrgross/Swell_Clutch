@@ -1,8 +1,19 @@
 import React from "react";
+import { useUser } from "@auth0/nextjs-auth0";
 import { Row, Col, Button } from "react-bootstrap";
+import axios from "axios";
 
 function SaveSwellBtn({ spot }) {
-  const saveSwell = async () => {};
+  const { user } = useUser();
+  const saveSwell = async () => {
+    console.log(user);
+    const body = {
+      spot: spot,
+      user: user,
+    };
+    const { data } = await axios.post("/api/db/saveSwell", body);
+    console.log(data);
+  };
   return (
     <Row>
       <Col></Col>

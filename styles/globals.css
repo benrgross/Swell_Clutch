@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family: "Libre Baskerville", serif;
   font-family: "Rubik", sans-serif;
+  background-color: #ebf4f94a;
 }
 
 a {
@@ -40,8 +41,9 @@ a {
 }
 
 .search__cont {
+  background-color: white;
   margin-top: 2rem;
-  border: 1.5px solid #0070f3;
+  border: 0.5px solid #d3e4f9ad;
   border-radius: 1%;
   padding: 3%;
 }
@@ -61,6 +63,10 @@ a {
 .spot__results-col {
   margin-top: 2rem;
   padding: 1rem;
+}
+
+.spot__results-cont {
+  margin-bottom: 10rem;
 }
 .spot__result-link {
   cursor: pointer;
@@ -125,7 +131,7 @@ a {
 
 .current-swell__report-cont {
   width: 100%;
-  border: 1px solid #0070f3;
+  border: 0.5px solid #d3e4f9ad;
 }
 .current-swell__swell-cont {
   width: 100%;
@@ -156,15 +162,17 @@ a {
   opacity: 0.9;
   font-size: 0.8rem;
 }
-
+.current-swell__report-cont {
+  background-color: white;
+  margin-bottom: 200px;
+}
 .current-swell__report-div {
-  margin-left: 1.5rem;
+  margin-left: 2.7rem;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 600px) {
   .current-swell__report-cont {
-    width: 100%;
-    border: 1px solid #0070f3;
     padding: 1px;
   }
   .current-swell__waveHeight-col {

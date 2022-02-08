@@ -24,13 +24,12 @@ function CurrentSwell({ data }) {
         <Col></Col>
       </Row>
       <Row className="current-swell__cont">
+        <Col></Col>
         <Col md={6} sm={12} className="current-swell__report">
-          <Container className="current-swell__report-cont rounded">
+          <Container className="current-swell__report-cont rounded shadow-sm">
             <Row>
               <div className="d-flex justify-content-center current-swell__report-header-cont">
-                <h4 className="current-swell__report-header">
-                  Surfline Report{" "}
-                </h4>
+                <h4 className="current-swell__report-header">Surf Report</h4>
               </div>
             </Row>
             <Row>
@@ -41,7 +40,6 @@ function CurrentSwell({ data }) {
             <Row>
               <Col
                 md={4}
-                sm={6}
                 className="current-swell__waveHeight-col current-swell__report-col"
               >
                 <div className="current-swell__report-div">
@@ -67,7 +65,6 @@ function CurrentSwell({ data }) {
               </Col>
               <Col
                 md={4}
-                sm={6}
                 className=" current-swell__report-col current-swell__waveHeight-col"
               >
                 <div className="current-swell__report-div">
@@ -94,7 +91,6 @@ function CurrentSwell({ data }) {
               </Col>
               <Col
                 md={4}
-                sm={6}
                 className="current-swell__report-col current-swell__waveHeight-col"
               >
                 <div className="current-swell__report-div">
@@ -114,12 +110,15 @@ function CurrentSwell({ data }) {
                   </Row>
                 </div>
               </Col>
+              <Col md={12}>
+                <div className="d-flex justify-content-center">
+                  <div>Buoy Swells</div>
+                </div>
+              </Col>
             </Row>
           </Container>
         </Col>
-        <Col md={6} className="current-swell__swell">
-          <Container className="current-swell__swell-cont">hello</Container>
-        </Col>
+        <Col></Col>
       </Row>
     </>
   );

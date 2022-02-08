@@ -78,14 +78,7 @@ a {
   color: #0070f3;
 }
 
-.current-swell__head-cont {
-}
-.current-swell__cont {
-}
-
 .current-swell__report {
-}
-.current-swell__swell {
 }
 
 .current-swell__head-row {
@@ -133,10 +126,6 @@ a {
   width: 100%;
   border: 0.5px solid #d3e4f9ad;
 }
-.current-swell__swell-cont {
-  width: 100%;
-  border: 1px solid #0070f3;
-}
 
 .current-swell__report-header {
   border-bottom: 1px solid #0070f3;
@@ -164,11 +153,28 @@ a {
 }
 .current-swell__report-cont {
   background-color: white;
-  margin-bottom: 200px;
+  margin-bottom: 2rem;
 }
 .current-swell__report-div {
   margin-left: 2.7rem;
   margin-bottom: 1rem;
+}
+
+.buoy__cont {
+  margin-bottom: 0rem;
+}
+
+.buoy__data-head {
+}
+
+.buoy__data-break {
+  border-bottom: 1px solid #0070f3;
+  margin: auto;
+  margin-bottom: 1rem;
+  width: 30%;
+}
+.save-btn {
+  font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -179,7 +185,7 @@ a {
     padding: 1rem;
   }
   .current-swell__waveHeight {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
   .current-swell__waveHeight-col {
     padding: 0.5rem 1rem 1rem 1rem;

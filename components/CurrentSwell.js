@@ -1,9 +1,9 @@
 import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import TideDirection from "./TideDirection";
 import RotateArrow from "./RotateArrow";
 import ConvertTimeStamp from "./ConvertTimeStamp";
+import BuoySwells from "./BuoySwells";
 
 function CurrentSwell({ data }) {
   const { spot } = data;
@@ -111,12 +111,25 @@ function CurrentSwell({ data }) {
                 </div>
               </Col>
               <Col md={12}>
-                <div className="d-flex justify-content-center">
-                  <div>Buoy Swells</div>
+                <div className="buoy__cont">
+                  <h5 className="buoy__data-head d-flex justify-content-center">
+                    Buoy Swells
+                  </h5>
+                  <span className="buoy__data-break d-flex justify-content-center"></span>
+                  <BuoySwells
+                    swells={spot.swells.filter((swell) => swell.height !== 0)}
+                  />
                 </div>
               </Col>
             </Row>
           </Container>
+        </Col>
+        <Col></Col>
+      </Row>
+      <Row>
+        <Col></Col>
+        <Col md={4} sm={12} className="d-flex justify-content-center">
+          <Button className="save-btn">Save Swell</Button>
         </Col>
         <Col></Col>
       </Row>

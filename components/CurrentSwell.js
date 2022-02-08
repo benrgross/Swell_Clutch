@@ -2,6 +2,7 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import TideDirection from "./TideDirection";
+import RotateArrow from "./RotateArrow";
 
 function CurrentSwell({ data }) {
   const { spot } = data;
@@ -77,7 +78,9 @@ function CurrentSwell({ data }) {
                   </div>
                 </Row>
               </Col>
-              <Col md={4}></Col>
+              <Col md={4}>
+                <RotateArrow deg={spot.wind} />
+              </Col>
             </Row>
           </Container>
         </Col>

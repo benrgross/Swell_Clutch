@@ -175,6 +175,7 @@ a {
 }
 .save-btn {
   font-size: 1.5rem;
+  margin-bottom: 10px;
 }
 
 @media only screen and (max-width: 600px) {

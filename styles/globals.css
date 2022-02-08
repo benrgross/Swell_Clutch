@@ -83,6 +83,7 @@ a {
 }
 
 .current-swell__head-row {
+  padding-right: opx;
 }
 
 .current-swell__head-cont {
@@ -144,7 +145,6 @@ a {
 }
 
 .current-swell__waveHeight {
-  margin-left: 0.3rem;
   font-size: 1.3rem;
 }
 
@@ -155,4 +155,26 @@ a {
 .current-swell__humanRelation {
   opacity: 0.9;
   font-size: 0.8rem;
+}
+
+.current-swell__report-div {
+  margin-left: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .current-swell__report-cont {
+    width: 100%;
+    border: 1px solid #0070f3;
+    padding: 1px;
+  }
+  .current-swell__waveHeight-col {
+    padding: 1rem;
+  }
+  .current-swell__waveHeight {
+    font-size: 1rem;
+  }
+  .current-swell__waveHeight-col {
+    padding: 0.5rem 1rem 1rem 1rem;
+    width: 50%;
+  }
 }

@@ -5,9 +5,7 @@ import SpotResults from "./SpotResults";
 function Results({ data }) {
   return (
     <div className="spot__results-cont">
-      <Row>
-        <SpotResults data={data} />
-      </Row>
+      <SpotResults data={data} />
     </div>
   );
 }

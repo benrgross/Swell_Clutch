@@ -9,7 +9,9 @@ function SearchSpotResults({ data }) {
   const [error, setError] = useState(false);
 
   const getSwell = async (e) => {
+    e.preventDefault();
     setLoading(true);
+
     setError(false);
     try {
       const body = {
@@ -18,6 +20,7 @@ function SearchSpotResults({ data }) {
       const { data } = await axios.post("/api/getswell/currentswell", body);
       console.log(data);
       setSwell(data);
+
       setLoading(false);
     } catch (err) {
       setError(true);

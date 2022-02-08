@@ -175,6 +175,11 @@ a {
 }
 .save-btn {
   font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.back-to-search-btn {
+  font-size: 1.5rem;
   margin-bottom: 10px;
 }
 

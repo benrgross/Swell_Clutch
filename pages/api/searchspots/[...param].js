@@ -24,10 +24,12 @@ export default async function handler(req, res) {
         };
         results.push(spot);
       });
-      console.log(results);
-      res.send(results);
+      res.status(200).send(results);
     } catch (error) {
+      res.status(400).send(error);
       console.log(error);
     }
+  } else {
+    res.status(400).send({ error: "server did not receive corrent method" });
   }
 }

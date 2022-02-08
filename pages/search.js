@@ -8,13 +8,7 @@ function Search() {
 
   return (
     <Container>
-      <Row>
-        <Col></Col>
-        <Col sm={12} md={6} className="dash__search-col">
-          <SearchSpot />
-        </Col>
-        <Col></Col>
-      </Row>
+      <SearchSpot />
     </Container>
   );
 }

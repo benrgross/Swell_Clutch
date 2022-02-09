@@ -13,6 +13,7 @@ function SearchSpot() {
 
   const searchSpot = async (e) => {
     e.preventDefault();
+
     setLoading(true);
     setError(false);
 
@@ -26,6 +27,7 @@ function SearchSpot() {
       } else {
         setLoading(false);
         setSpot(data);
+        console.log(data);
         setSearch(false);
       }
     } catch (error) {

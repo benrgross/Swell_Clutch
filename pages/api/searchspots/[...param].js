@@ -15,7 +15,8 @@ export default async function handler(req, res) {
       $("#surf-spots > div > div").each((i, element) => {
         let href = $(element).children("a").attr("href");
         let spotId = href.split("/")[5];
-        let name = $(element).find(".result__name").text();
+        let nameFromRef = href.split("/");
+        let name = nameFromRef[4].split("-").join(" ");
 
         const spot = {
           name: name,

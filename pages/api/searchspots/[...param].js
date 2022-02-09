@@ -9,8 +9,7 @@ export default async function handler(req, res) {
         `https://www.surfline.com/search/${req.query.param}`
       );
 
-      const $ = cheerio.load(data);
-      res.json($);
+      const $ = await cheerio.load(data);
 
       $("#surf-spots > div > div").each((i, element) => {
         let href = $(element).children("a").attr("href");

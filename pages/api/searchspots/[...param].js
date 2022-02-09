@@ -4,14 +4,13 @@ const cheerio = require("cheerio");
 export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
-      console.log(req.body);
-      res.json({ body: req.query.param });
       const results = [];
       const { data } = await axios.get(
         `https://www.surfline.com/search/${req.query.param}`
       );
 
       const $ = cheerio.load(data);
+      res.json($);
 
       $("#surf-spots > div > div").each((i, element) => {
         let href = $(element).children("a").attr("href");

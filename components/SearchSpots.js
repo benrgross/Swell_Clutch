@@ -14,15 +14,15 @@ function SearchSpot() {
 
   const searchSpot = async (e) => {
     e.preventDefault();
-
+    const body = {
+      spot: spotName.current.value,
+    };
     setLoading(true);
     setError(false);
     console.log("spot out of try", spotName.current.value);
     try {
       console.log("spot", spotName.current.value);
-      const { data } = await axios.get(
-        `${server}/api/searchspots/${spotName.current.value}`
-      );
+      const { data } = await axios.post(`${server}/api/searchspots/spot`, body);
       console.log("data", data);
       if (data.length < 1) {
         setLoading(false);

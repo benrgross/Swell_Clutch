@@ -17,17 +17,17 @@ model User {
   email         String?   @unique
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  location     Location []
-  session      Session []
+  location     Location[]
+  session      Session[]
   @@map(name: "users")
 }
 
 model Location {
   id            Int       @default(autoincrement()) @id
-  spot_id       Int       @unique
-  name          String?
-  lat           Int
-  lon           Int
+  spot_id       String      @unique
+  name          String?    @unique
+  lat           Float
+  lon           Float
   timezone      String?
   thumbnail     String?
   type          String?
@@ -44,15 +44,16 @@ model Session {
   timeStamp     Int  
   timeZone      String     
   utcOffset     Int      
-  surfMin       Int
-  surfMax       Int
+  surfMin       Float
+  surfMax       Float
   waterTemp     String?
-  wind          Json
-  tide          Json
-  report        Json
+  wind          Json?
+  tide          Json?
+  report        Json?
+  conditions    Json?
   userEmail     String?
   user          User?     @relation(fields: [userEmail], references: [email])
-  spotId        Int?
+  spotId        String?
   spot          Location?     @relation(fields: [spotId], references: [spot_id])
   swell         Swell[]
 }
@@ -60,9 +61,9 @@ model Session {
 
 model Swell {
   id            Int       @default(autoincrement()) @id
-  height        Int?
-  period        Int
-  direction     Int
+  height        Float?
+  period        Int?
+  direction     Int?
   directionMin  Int?
   sessionId     Int?
   session       Session?  @relation(fields: [sessionId], references: [id])

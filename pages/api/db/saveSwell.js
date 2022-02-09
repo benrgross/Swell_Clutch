@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   const { swells } = req.body;
   console.log(req.body.user);
   console.log(swells);
-  const spotId = parseFloat(_id);
+
   if (req.method === "POST") {
     try {
       const user = await prisma.user.findUnique({
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
           name: spot.name,
         },
         create: {
-          spot_id: spotId,
+          spot_id: _id,
           name: spot.name,
           lat: spot.lat,
           lon: spot.lon,
@@ -41,6 +41,7 @@ export default async function handler(req, res) {
               utcOffset: spot.tide.current.utcOffset,
               surfMax: spot.waveHeight.max,
               surfMin: spot.waveHeight.min,
+              userEmail: user.email,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {
                 human: spot.conditions.human,
@@ -60,13 +61,11 @@ export default async function handler(req, res) {
                 direction: spot.wind.direction,
                 directionType: spot.wind.directionType,
               },
-              locationId: spotId,
-              userEmail: req.body.user.email,
             },
           },
         },
         update: {
-          spot_id: spotId,
+          spot_id: _id,
           name: spot.name,
           lat: spot.lat,
           lon: spot.lon,
@@ -86,6 +85,7 @@ export default async function handler(req, res) {
               utcOffset: spot.tide.current.utcOffset,
               surfMax: spot.waveHeight.max,
               surfMin: spot.waveHeight.min,
+              userEmail: user.email,
               waterTemp: `${spot.waterTemp.min} - ${spot.waterTemp.max}`,
               conditions: {
                 human: spot.conditions.human,
@@ -105,8 +105,6 @@ export default async function handler(req, res) {
                 direction: spot.wind.direction,
                 directionType: spot.wind.directionType,
               },
-              locationId: spotId,
-              userEmail: req.body.user.email,
             },
           },
         },

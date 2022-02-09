@@ -25,9 +25,11 @@ export default async function handler(req, res) {
         results.push(spot);
       });
       console.log(results);
-      res.status(200).json(results);
+      if (results.length > 1) {
+        res.status(200).json(results);
+      } else res.send({ error: "cheerio not loading" });
     } catch (error) {
-      res.json(error);
+      res.json({ error: "server error" });
       // res.status(400).send({ error: "this is a cheerio error" });
       // console.log(error);
     }

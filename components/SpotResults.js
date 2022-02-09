@@ -41,7 +41,7 @@ function SearchSpotResults({ data }) {
                     <p
                       onClick={getSwell}
                       className="spot__result-link"
-                      key={spot.spotId}
+                      key={spot.name}
                       data-spotid={spot.spotId}
                       data-api={spot.href}
                     >

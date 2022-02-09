@@ -7,7 +7,7 @@ import Dashboard from "../components/Dashboard";
 export default function Home() {
   const { user } = useUser();
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
         <title>Swell</title>
         <meta name="description" content="Surf App for Saving Swells" />

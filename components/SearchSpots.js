@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import Results from "./Results";
+import { server } from "../config";
 import SearchSpotResults from "./SpotResults";
 
 function SearchSpot() {
@@ -19,7 +20,7 @@ function SearchSpot() {
 
     try {
       const { data } = await axios.get(
-        `/api/searchspots/${spotName.current.value}`
+        `${server}/api/searchspots/${spotName.current.value}`
       );
       if (data.length < 1) {
         setLoading(false);

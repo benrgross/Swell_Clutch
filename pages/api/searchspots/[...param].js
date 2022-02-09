@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       console.log(results);
       res.status(200).send(results);
     } catch (error) {
-      res.status(400).send(error);
+      res.status(400).send({ error: "this is a cheerio error" });
       console.log(error);
     }
   } else {

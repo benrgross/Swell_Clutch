@@ -34,9 +34,8 @@ model Location {
   subregionId   String?
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
-  user          User?     @relation(fields: [userId], references: [id])
-  userId        Int?
-  session       Session []
+  user          User[]
+  session       Session[]
 }
 
 model Session {
@@ -48,25 +47,16 @@ model Session {
   surfMin       Int
   surfMax       Int
   waterTemp     String?
-  user          User?     @relation(fields: [userId], references: [id])
-  userId        Int?
-  spot          Location?     @relation(fields: [locationId], references: [spot_id])
-  locationId    Int?
+  wind          Json
+  tide          Json
+  report        Json
+  userEmail     String?
+  user          User?     @relation(fields: [userEmail], references: [email])
+  spotId        Int?
+  spot          Location?     @relation(fields: [spotId], references: [spot_id])
   swell         Swell[]
-  wind          Wind[]
-  tide          Tide[]
-  report        Report[]
-
 }
 
-model Wind {
-  id            Int       @default(autoincrement()) @id
-  speed         Int?
-  dir           Int?
-  dirType       String?
-  session       Session?  @relation(fields: [sessionId], references: [id])  
-  sessionId     Int?
-}
 
 model Swell {
   id            Int       @default(autoincrement()) @id
@@ -74,36 +64,13 @@ model Swell {
   period        Int
   direction     Int
   directionMin  Int?
+  sessionId     Int?
   session       Session?  @relation(fields: [sessionId], references: [id])
-  sessionId    Int? 
 }
 
-model Tide {
-  id            Int       @default(autoincrement()) @id
-  type          String?
-  height        Int?
-  timeStamp     Int?
-  utcOffset     Int?
-  nextTide      String?
-  nextTideFt    Int?
-  nextTideTime  Int?
-  session      Session?  @relation(fields: [sessionId], references: [id])
-  sessionId    Int? 
-}
 
-model Report {
-id            Int       @default(autoincrement()) @id
-human         Boolean?
-conditions    String?
-expired       Boolean?
-min           Int?
-max           Int?
-occasional    Int?
-humanRelation String?
-plus          Boolean
-session      Session?  @relation(fields: [sessionId], references: [id])
-sessionId    Int? 
-}
+
+
 
 
 

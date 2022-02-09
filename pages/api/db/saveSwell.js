@@ -61,6 +61,7 @@ export default async function handler(req, res) {
                 direction: spot.wind.direction,
                 directionType: spot.wind.directionType,
               },
+              swells: [...spot.swells],
             },
           },
         },

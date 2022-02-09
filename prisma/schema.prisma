@@ -51,23 +51,15 @@ model Session {
   tide          Json?
   report        Json?
   conditions    Json?
+  swells        Json?
   userEmail     String?
   user          User?     @relation(fields: [userEmail], references: [email])
   spotId        String?
   spot          Location?     @relation(fields: [spotId], references: [spot_id])
-  swell         Swell[]
+  
 }
 
 
-model Swell {
-  id            Int       @default(autoincrement()) @id
-  height        Float?
-  period        Int?
-  direction     Int?
-  directionMin  Int?
-  sessionId     Int?
-  session       Session?  @relation(fields: [sessionId], references: [id])
-}
 
 
 

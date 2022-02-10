@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const results = [];
-      console.log("params", req.query);
+
       const { data } = await axios.get(
         `https://www.surfline.com/search/${req.query.params}`
       );
@@ -25,7 +25,6 @@ export default async function handler(req, res) {
         };
         results.push(spot);
       });
-      console.log(results);
 
       res.status(200).json(results);
     } catch (error) {

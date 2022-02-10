@@ -1,8 +1,10 @@
+import axios from "axios";
+
 export default async function handler(req, res) {
   console.log(req.body);
   if (req.method === "POST") {
     try {
-      const response = await fetch(
+      const { data } = await axios.get(
         `http://services.surfline.com/kbyg/spots/forecasts/wave?spotId=${req.body.spotId}`
       );
       const { lat, lon } = data.associated.location;

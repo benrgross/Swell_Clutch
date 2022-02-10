@@ -2,11 +2,11 @@ import axios from "axios";
 import cheerio from "cheerio";
 
 export default async function handler(req, res) {
-  if (req.method === "POST") {
+  if (req.method === "GET") {
     try {
       const results = [];
       const { data } = await axios.get(
-        `https://www.surfline.com/search/${req.body.spot}`
+        `https://www.surfline.com/search/${req.query.param}`
       );
 
       const $ = await cheerio.load(data);

@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import Results from "./Results";
-import { server } from "../config";
 import SearchSpotResults from "./SpotResults";
 
 function SearchSpot() {
@@ -17,12 +16,11 @@ function SearchSpot() {
 
     setLoading(true);
     setError(false);
-    console.log("spot out of try", spotName.current.value);
     try {
-      const body = {
-        spot: spotName.current.value,
-      };
-      const { data } = await axios.post(`${server}/api/spot`, body);
+      const { data } = await axios.get(
+        `/api/searchspots/${spotName.current.value}`,
+        body
+      );
       console.log("data", data);
       if (data.length < 1) {
         setLoading(false);

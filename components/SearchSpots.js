@@ -18,10 +18,9 @@ function SearchSpot() {
     setError(false);
     try {
       const { data } = await axios.get(
-        `/api/searchspots/${spotName.current.value}`,
-        body
+        `/api/searchspots/${spotName.current.value}`
       );
-      console.log("data", data);
+
       if (data.length < 1) {
         setLoading(false);
         setError(true);

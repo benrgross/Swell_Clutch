@@ -5,8 +5,9 @@ export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
       const results = [];
+      console.log("params", req.query);
       const { data } = await axios.get(
-        `https://www.surfline.com/search/${req.query.param}`
+        `https://www.surfline.com/search/${req.query.params}`
       );
 
       const $ = await cheerio.load(data);

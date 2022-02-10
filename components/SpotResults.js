@@ -7,7 +7,7 @@ function SearchSpotResults({ data }) {
   const [swell, setSwell] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  console.log("data", data);
+
   const getSwell = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -17,9 +17,9 @@ function SearchSpotResults({ data }) {
         spotId: e.target.getAttribute("data-spotid"),
       };
       const { data } = await axios.post("/api/getswell/currentswell", body);
-      console.log(data);
+
       setSwell(data);
-      console.log(swell);
+
       setLoading(false);
     } catch (err) {
       setError(true);
@@ -34,14 +34,13 @@ function SearchSpotResults({ data }) {
           <Col sm={12} md={6} className="spot__results-col">
             {" "}
             {data ? (
-              data.map((spot) => {
+              data.map((spot, i) => {
                 return (
                   <>
-                    <p></p>
                     <p
                       onClick={getSwell}
                       className="spot__result-link"
-                      key={spot.name}
+                      key={i}
                       data-spotid={spot.spotId}
                       data-api={spot.href}
                     >

@@ -16,7 +16,6 @@ function SearchSpot() {
 
     setLoading(true);
     setError(false);
-
     try {
       const { data } = await axios.get(
         `/api/searchspots/${spotName.current.value}`
@@ -27,7 +26,6 @@ function SearchSpot() {
       } else {
         setLoading(false);
         setSpot(data);
-        console.log(data);
         setSearch(false);
       }
     } catch (error) {

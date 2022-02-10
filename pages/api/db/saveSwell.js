@@ -15,7 +15,7 @@ export default async function handler(req, res) {
           email: req.body.user.email,
         },
       });
-      console.log(user);
+
       const location = await prisma.location.upsert({
         where: {
           name: spot.name,
@@ -61,6 +61,7 @@ export default async function handler(req, res) {
                 direction: spot.wind.direction,
                 directionType: spot.wind.directionType,
               },
+              // eslint-disable-next-line no-debugger
               swells: [...spot.swells],
             },
           },
@@ -106,6 +107,8 @@ export default async function handler(req, res) {
                 direction: spot.wind.direction,
                 directionType: spot.wind.directionType,
               },
+              // eslint-disable-next-line no-debugger
+              swells: [...spot.swells],
             },
           },
         },

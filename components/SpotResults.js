@@ -34,14 +34,13 @@ function SearchSpotResults({ data }) {
           <Col sm={12} md={6} className="spot__results-col">
             {" "}
             {data ? (
-              data.map((spot) => {
+              data.map((spot, i) => {
                 return (
                   <>
-                    <p></p>
                     <p
                       onClick={getSwell}
                       className="spot__result-link"
-                      key={spot.name}
+                      key={i}
                       data-spotid={spot.spotId}
                       data-api={spot.href}
                     >

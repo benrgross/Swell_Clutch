@@ -30,7 +30,6 @@ function SearchSpot() {
       } else {
         setLoading(false);
         setSpot(data);
-        console.log(data);
         setSearch(false);
       }
     } catch (error) {

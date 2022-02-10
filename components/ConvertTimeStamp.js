@@ -2,9 +2,8 @@ import React from "react";
 import moment from "moment";
 
 function ConvertTimeStamp({ timestamp }) {
-  let t = moment(new Date(timestamp)).format("h:mm a");
+  // let t = moment(new Date(timestamp)).format("h:mm a");
 
-  console.log(t);
   return <div>{t}</div>;
 }
 

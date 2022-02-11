@@ -13,14 +13,14 @@ function SearchSpot() {
 
   const searchSpot = async (e) => {
     e.preventDefault();
-
+    console.log(spotName.current.value);
     setLoading(true);
     setError(false);
     try {
       const { data } = await axios.get(
         `/api/searchspots/${spotName.current.value}`
       );
-
+      console.log(data);
       if (data.length < 1) {
         setLoading(false);
         setError(true);

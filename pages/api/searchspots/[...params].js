@@ -2,6 +2,7 @@ import axios from "axios";
 import cheerio from "cheerio";
 
 export default async function handler(req, res) {
+  console.log(req.param);
   if (req.method === "GET") {
     try {
       const results = [];
@@ -29,10 +30,7 @@ export default async function handler(req, res) {
       res.status(200).json(results);
     } catch (error) {
       res.json({ error: "server error" });
-      // res.status(400).send({ error: "this is a cheerio error" });
-      // console.log(error);
+      console.log(error);
     }
-  } else {
-    res.status(400).send({ error: "server did not receive corrent method" });
   }
 }

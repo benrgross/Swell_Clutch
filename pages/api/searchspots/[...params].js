@@ -3,12 +3,21 @@ import cheerio from "cheerio";
 
 export default async function handler(req, res) {
   console.log(req.param);
+
   if (req.method === "GET") {
     try {
       const results = [];
 
       const { data } = await axios.get(
-        `https://www.surfline.com/search/${req.query.params}`
+        `https://www.surfline.com/search/${req.query.params}`,
+        {
+          transformRequest: [
+            (data, headers) => {
+              delete headers.common.Authorization;
+              return data;
+            },
+          ],
+        }
       );
 
       const $ = await cheerio.load(data);

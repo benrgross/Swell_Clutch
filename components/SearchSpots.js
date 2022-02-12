@@ -20,10 +20,11 @@ function SearchSpot() {
       const { data } = await axios.get(
         `/api/searchspots/${spotName.current.value}`
       );
-      console.log(data);
+      console.log("data", data);
       if (data.length < 1) {
         setLoading(false);
         setError(true);
+        setSpot([]);
       } else {
         setLoading(false);
         setSpot(data);

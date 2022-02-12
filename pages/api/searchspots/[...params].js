@@ -1,8 +1,10 @@
 import axios from "axios";
 import cheerio from "cheerio";
+const chrome = require("chrome-aws-lambda");
 
 export default async function handler(req, res) {
   console.log(req.param);
+  console.log(req.method);
 
   if (req.method === "GET") {
     try {
@@ -20,10 +22,16 @@ export default async function handler(req, res) {
       //   }
       // );
 
-      const browser = await puppeteer.launch({
-        args: ["--no-sandbox", "--disable-setuid-sandbox"],
-        headless: true,
-      });
+      const browser = await puppeteer.launch(
+        process.env.NODE_ENV === "production"
+          ? {
+              args: chrome.args,
+              executablePath: await chrome.executablePath,
+              headless: chrome.headless,
+            }
+          : { headless: true }
+      );
+
       const page = await browser.newPage();
       await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
 

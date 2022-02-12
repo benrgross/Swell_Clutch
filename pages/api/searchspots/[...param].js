@@ -28,7 +28,7 @@ export default async function handler(req, res) {
           "--disable-setuid-sandbox",
           '--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3312.0 Safari/537.36"',
         ],
-        waitUntil: "domcontentloaded",
+        // waitUntil: "domcontentloaded",
       });
       const page = await browser.newPage();
       await page.setUserAgent(

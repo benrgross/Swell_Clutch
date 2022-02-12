@@ -8,19 +8,28 @@ export default async function handler(req, res) {
     try {
       const results = [];
 
-      const { data } = await axios.get(
-        `https://www.surfline.com/search/${req.query.params}`,
-        {
-          transformRequest: [
-            (data, headers) => {
-              delete headers.common.Authorization;
-              return data;
-            },
-          ],
-        }
-      );
+      // const { data } = await axios.get(
+      //   `https://www.surfline.com/search/${req.query.params}`,
+      //   {
+      //     transformRequest: [
+      //       (data, headers) => {
+      //         delete headers.common;
+      //         return data;
+      //       },
+      //     ],
+      //   }
+      // );
 
-      const $ = await cheerio.load(data);
+      const browser = await puppeteer.launch({
+        args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        headless: true,
+      });
+      const page = await browser.newPage();
+      await page.goto(`https://www.surfline.com/search/${req.params.spot}`);
+
+      const html = await page.content(); // serialized HTML of page DOM.
+
+      const $ = await cheerio.load(html);
 
       $("#surf-spots > div > div").each((i, element) => {
         let href = $(element).children("a").attr("href");

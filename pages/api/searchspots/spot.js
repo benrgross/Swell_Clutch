@@ -1,10 +1,9 @@
 import chromium from "chrome-aws-lambda";
-import playwright from "playwright-core";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const browser = await playwright.chromium.launch({
+      const browser = await chromium.puppeteer.launch({
         args: [...chromium.args, "--font-render-hinting=none"], // This way fix rendering issues with specific fonts
         executablePath:
           process.env.NODE_ENV === "production"

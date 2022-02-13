@@ -1,20 +1,20 @@
-import awsChromium from "chrome-aws-lambda";
+import chromium from "chrome-aws-lambda";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const browser = await awsChromium.launch({
-        args: [...awsChromium.args, "--font-render-hinting=none"], // This way fix rendering issues with specific fonts
+      const browser = await chromium.puppeteer.launch({
+        args: [...chromium.args, "--font-render-hinting=none"], // This way fix rendering issues with specific fonts
         executablePath:
           process.env.NODE_ENV === "production"
-            ? await awsChromium.executablePath
+            ? await chromium.executablePath
             : "/usr/local/bin/chromium",
         headless:
-          process.env.NODE_ENV === "production" ? awsChromium.headless : true,
+          process.env.NODE_ENV === "production" ? chromium.headless : true,
         waitUntil: "domcontentloaded",
       });
 
-      const context = await browser.newContext();
+      // const context = await browser.newContext();
       const page = await browser.newPage();
 
       const url = `https://www.surfline.com/search/${req.body.spot}`;

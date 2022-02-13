@@ -1,7 +1,6 @@
 import cheerio from "cheerio";
 import chromium from "chrome-aws-lambda";
 import playwright from "playwright-core";
-import puppeteer from "puppeteer";
 
 export default async function handler(req, res) {
   console.log(req.query.param[0]);

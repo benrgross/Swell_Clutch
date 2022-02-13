@@ -4,8 +4,6 @@ import playwright from "playwright-core";
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const results = [];
-
       const browser = await playwright.chromium.launch({
         args: [...chromium.args, "--font-render-hinting=none"], // This way fix rendering issues with specific fonts
         executablePath:
@@ -53,13 +51,12 @@ export default async function handler(req, res) {
         );
         return spots;
       });
-      console.log(text);
+
       await browser.close();
 
       res.status(200).json(text);
     } catch (error) {
       res.json(error);
-      console.log(error);
     }
   }
 }

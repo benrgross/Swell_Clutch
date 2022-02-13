@@ -1,25 +1,22 @@
-import chromium from "chrome-aws-lambda";
+import awsChromium from "chrome-aws-lambda";
+import { chromium } from "playwright-core";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const browser = await chromium.puppeteer.launch({
-        args: [...chromium.args, "--font-render-hinting=none"], // This way fix rendering issues with specific fonts
+      const browser = await chromium.launch({
+        args: [...awsChromium.args, "--font-render-hinting=none"], // This way fix rendering issues with specific fonts
         executablePath:
           process.env.NODE_ENV === "production"
-            ? await chromium.executablePath
+            ? await awsChromium.executablePath
             : "/usr/local/bin/chromium",
         headless:
-          process.env.NODE_ENV === "production" ? chromium.headless : true,
+          process.env.NODE_ENV === "production" ? awsChromium.headless : true,
         waitUntil: "domcontentloaded",
       });
 
       // const context = await browser.newContext();
       const page = await browser.newPage();
-
-      await page.setUserAgent(
-        "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
-      );
 
       const url = `https://www.surfline.com/search/${req.body.spot}`;
 
@@ -78,6 +75,9 @@ export default async function handler(req, res) {
 // );
 
 // const page = await browser.newPage();
+// await page.setUserAgent(
+//   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36"
+// );
 
 // const text = await page.evaluate(() => {
 //   // const name = Array.from(

@@ -1,4 +1,3 @@
-import cheerio from "cheerio";
 import chromium from "chrome-aws-lambda";
 import playwright from "playwright-core";
 
@@ -25,36 +24,39 @@ export default async function handler(req, res) {
 
       await page.goto(url);
 
-      const html = await page.content();
+      // const html = await page.content();
 
-      // const text = await page.evaluate(() => {
-      //   const name = document.querySelector(
-      //     ".SearchResults_result__5syZp"
-      //   ).textContent;
+      const text = await page.evaluate(() => {
+        const spots = Array.from(
+          document
+            .querySelector("#surf-spots")
+            .querySelectorAll(".SearchResults_result__5syZp"),
+          (element) => {
+            let href = element
+              .querySelector(".SearchResults_resultLink__xhEnG")
+              .getAttribute("href");
 
-      //   return name;
-      // });
-      const $ = await cheerio.load(html);
+            let name = element.querySelector(
+              ".SearchResults_resultName__zRhYX"
+            ).textContent;
 
-      await $("#surf-spots > div > div").each((i, element) => {
-        console.log("hello");
-        let href = $(element).children("a").attr("href");
-        let spotId = href.split("/")[5];
-        let nameFromRef = href.split("/");
-        let name = nameFromRef[4].split("-").join(" ");
+            let spotId = href.split("/")[5];
 
-        const spot = {
-          name: name,
-          spotId: spotId,
-          href: href,
-        };
-        console.log(spot);
-        results.push(spot);
+            const spot = {
+              name: name,
+              href: href,
+              spotId: spotId,
+            };
+
+            return spot;
+          }
+        );
+        return spots;
       });
-
+      console.log(text);
       await browser.close();
 
-      res.status(200).json(results);
+      res.status(200).json(text);
     } catch (error) {
       res.json(error);
       console.log(error);
@@ -99,3 +101,21 @@ export default async function handler(req, res) {
 //   ],
 //   // waitUntil: "domcontentloaded",
 // });
+
+// const $ = await cheerio.load(html);
+
+//       await $("#surf-spots > div > div").each((i, element) => {
+//         console.log("hello");
+//         let href = $(element).children("a").attr("href");
+//         let spotId = href.split("/")[5];
+//         let nameFromRef = href.split("/");
+//         let name = nameFromRef[4].split("-").join(" ");
+
+//         const spot = {
+//           name: name,
+//           spotId: spotId,
+//           href: href,
+//         };
+//         console.log(spot);
+//         results.push(spot);
+//       });

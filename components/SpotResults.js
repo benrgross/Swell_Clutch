@@ -36,17 +36,15 @@ function SearchSpotResults({ data }) {
             {data ? (
               data.map((spot, i) => {
                 return (
-                  <>
-                    <p
-                      onClick={getSwell}
-                      className="spot__result-link"
-                      key={i}
-                      data-spotid={spot.spotId}
-                      data-api={spot.href}
-                    >
-                      {spot.name}
-                    </p>
-                  </>
+                  <p
+                    onClick={getSwell}
+                    className="spot__result-link"
+                    key={i}
+                    data-spotid={spot.spotId}
+                    data-api={spot.href}
+                  >
+                    {spot.name}
+                  </p>
                 );
               })
             ) : (

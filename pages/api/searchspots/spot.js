@@ -3,10 +3,7 @@ import chromium from "chrome-aws-lambda";
 import playwright from "playwright-core";
 
 export default async function handler(req, res) {
-  console.log(req.query.param[0]);
-  console.log(req.method);
-
-  if (req.method === "GET") {
+  if (req.method === "POST") {
     try {
       const results = [];
 
@@ -24,7 +21,7 @@ export default async function handler(req, res) {
       // const context = await browser.newContext();
       const page = await browser.newPage();
 
-      const url = `https://www.surfline.com/search/${req.query.param[0]}`;
+      const url = `https://www.surfline.com/search/${req.body.spot}`;
 
       await page.goto(url);
 

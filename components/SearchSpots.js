@@ -16,10 +16,11 @@ function SearchSpot() {
     console.log(spotName.current.value);
     setLoading(true);
     setError(false);
+    const body = {
+      spot: spotName.current.value,
+    };
     try {
-      const { data } = await axios.get(
-        `/api/searchspots/${spotName.current.value}`
-      );
+      const { data } = await axios.post(`/api/searchspots/spot`, body);
       console.log("data", data);
       if (data.length < 1) {
         setLoading(false);

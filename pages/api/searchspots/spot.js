@@ -1,10 +1,9 @@
 import awsChromium from "chrome-aws-lambda";
-import { chromium } from "playwright-core";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const browser = await chromium.launch({
+      const browser = await awsChromium.launch({
         args: [...awsChromium.args, "--font-render-hinting=none"], // This way fix rendering issues with specific fonts
         executablePath:
           process.env.NODE_ENV === "production"
@@ -15,14 +14,14 @@ export default async function handler(req, res) {
         waitUntil: "domcontentloaded",
       });
 
-      // const context = await browser.newContext();
+      const context = await browser.newContext();
       const page = await browser.newPage();
 
       const url = `https://www.surfline.com/search/${req.body.spot}`;
 
       await page.goto(url);
 
-      // const html = await page.content();
+      const html = await page.content();
 
       const text = await page.evaluate(() => {
         const spots = Array.from(
@@ -54,7 +53,7 @@ export default async function handler(req, res) {
 
       await browser.close();
 
-      res.status(200).json(text);
+      res.status(200).json(html);
     } catch (error) {
       res.json(error);
     }

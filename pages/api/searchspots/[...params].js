@@ -1,61 +1,42 @@
-import chromium from "chrome-aws-lambda";
+import cheerio from "cheerio";
+import axios from "axios";
 
 export default async function handler(req, res) {
-  if (req.method === "POST") {
+  if (req.method === "GET") {
+    console.log(req.query);
     try {
-      const browser = await chromium.puppeteer.launch({
-        args: [...chromium.args, "--font-render-hinting=none"], // This way fix rendering issues with specific fonts
-        executablePath:
-          process.env.NODE_ENV === "production"
-            ? await chromium.executablePath
-            : "/usr/local/bin/chromium",
-        headless:
-          process.env.NODE_ENV === "production" ? chromium.headless : true,
-        waitUntil: "domcontentloaded",
+      const { data } = await axios.get(
+        `https://www.surfline.com/search/${req.query.params[0]}`,
+        {
+          headers: {
+            "User-Agent":
+              "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+          },
+        }
+      );
+
+      const $ = await cheerio.load(data);
+
+      let results = [];
+      $("#surf-spots > div > div").each((i, element) => {
+        let href = $(element).children("a").attr("href");
+        let spotId = href.split("/")[5];
+        let nameFromRef = href.split("/");
+        let name = nameFromRef[4].split("-").join(" ");
+
+        const spot = {
+          name: name,
+          spotId: spotId,
+          href: href,
+        };
+        results.push(spot);
       });
 
-      // const context = await browser.newContext();
-      const page = await browser.newPage();
+      console.log(results);
 
-      const url = `https://www.surfline.com/search/${req.body.spot}`;
-
-      await page.goto(url);
-
-      const html = await page.content();
-
-      const text = await page.evaluate(() => {
-        const spots = Array.from(
-          document
-            .querySelector("#surf-spots")
-            .querySelectorAll(".SearchResults_result__5syZp"),
-          (element) => {
-            let href = element
-              .querySelector(".SearchResults_resultLink__xhEnG")
-              .getAttribute("href");
-
-            let name = element.querySelector(
-              ".SearchResults_resultName__zRhYX"
-            ).textContent;
-
-            let spotId = href.split("/")[5];
-
-            const spot = {
-              name: name,
-              href: href,
-              spotId: spotId,
-            };
-
-            return spot;
-          }
-        );
-        return spots;
-      });
-
-      await browser.close();
-
-      res.status(200).json(html);
-    } catch (error) {
-      res.json(error);
+      res.send(results);
+    } catch (err) {
+      res.send(err);
     }
   }
 }

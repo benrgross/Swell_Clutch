@@ -13,10 +13,11 @@ function SearchSpotResults({ data }) {
     setLoading(true);
     setError(false);
     try {
-      const body = {
-        spotId: e.target.getAttribute("data-spotid"),
-      };
-      const { data } = await axios.post("/api/getswell/currentswell", body);
+      const { data } = await axios.get(
+        `/api/getswell/currentswell/${e.target.getAttribute("data-spotid")}`
+      );
+
+      console.log(data);
 
       setSwell(data);
 

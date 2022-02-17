@@ -2,4 +2,4 @@ const dev = process.env.NODE_ENV !== "production";
 
 export const server = dev
   ? "http://localhost:3001"
-  : "https://swell-clutch-smoky.vercel.app";
+  : "https://swell-clutch-five.vercel.app";

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import Results from "./Results";
 import SearchSpotResults from "./SpotResults";
+import { server } from "../config";
 
 function SearchSpot() {
   const spotName = useRef();
@@ -19,7 +20,7 @@ function SearchSpot() {
 
     try {
       const { data } = await axios.get(
-        `/api/searchspots/${spotName.current.value}`
+        `${server}/api/searchspots/${spotName.current.value}`
       );
       console.log("data", data);
 

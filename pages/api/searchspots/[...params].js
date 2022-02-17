@@ -11,6 +11,7 @@ export default async function handler(req, res) {
           headers: {
             "User-Agent":
               "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36",
+            "Cache-Control": " no-cache, no-store, max-age=0, must-revalidate",
           },
         }
       );
